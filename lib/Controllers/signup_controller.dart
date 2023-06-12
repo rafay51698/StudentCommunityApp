@@ -1,6 +1,6 @@
 import 'package:chattinapp/Services/repository.dart';
 import 'package:chattinapp/Util/util.dart';
-import 'package:chattinapp/Views/HomeScreen/home_screen.dart';
+
 import 'package:chattinapp/Views/ProfileScreen/profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,7 +32,8 @@ class SignupController extends GetxController {
         name: nameController.text.trim(),
       );
       print("${nameController.text.trim()}");
-      Get.off(() => HomeScreen());
+      Get.off(() => ProfileScreen());
+
       update();
     } else {
       Get.snackbar("Error", "Incomplete profile data");

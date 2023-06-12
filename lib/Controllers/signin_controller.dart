@@ -1,6 +1,6 @@
 import 'package:chattinapp/Services/repository.dart';
 import 'package:chattinapp/Util/util.dart';
-import 'package:chattinapp/Views/HomeScreen/home_screen.dart';
+import 'package:chattinapp/Views/ProfileScreen/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,13 +11,13 @@ class SignInController extends GetxController {
 
 
 
-  signupUser() async {
+  signInUser() async {
 
       await Repository.signIn(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      Get.off(() => HomeScreen());
+      Get.off(() => ProfileScreen());
       update();
 
   }

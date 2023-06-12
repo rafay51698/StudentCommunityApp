@@ -1,4 +1,3 @@
-import 'package:chattinapp/Views/HomeScreen/home_screen.dart';
 import 'package:chattinapp/Views/SignupScreen/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             smartManagement: SmartManagement.full,
-            home: HomeScreen(),
+            home: SignUpScreen(),
           );
         });
   }

@@ -1,20 +1,21 @@
 import 'dart:io';
 
+import 'package:chattinapp/Controllers/signin_controller.dart';
 import 'package:chattinapp/Controllers/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SignIpScreen extends StatelessWidget {
-  SignIpScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
 
-  SignupController controller = Get.put(SignupController());
+  SignInController controller = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Sign In'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -24,45 +25,8 @@ class SignIpScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              GetBuilder(
-                init: controller,
-                builder: (_) {
-                  return SizedBox(
-                    width: 100.w,
-                    height: 100.w,
-                    child: InkWell(
-                      onTap: () {
-                        controller.getImage();
-                      },
-                      child: controller.image.value != null
-                          ? ClipRRect(
-                        borderRadius: BorderRadius.circular(50.w),
-                        child: Image.file(
-                          File(controller.image.value!.path),
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                          : ClipRRect(
-                        borderRadius: BorderRadius.circular(50.w),
-                        child: Image.network(
-                          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              TextFormField(
-                controller: controller.nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                ),
-              ),
-              const SizedBox(height: 16.0),
               TextFormField(
                 controller: controller.emailController,
-
                 decoration: const InputDecoration(
                   labelText: 'Email',
                 ),
@@ -70,7 +34,6 @@ class SignIpScreen extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: controller.passwordController,
-
                 decoration: const InputDecoration(
                   labelText: 'Password',
                 ),
@@ -79,17 +42,17 @@ class SignIpScreen extends StatelessWidget {
               const SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
-                  controller.signupUser();
+                  controller.signInUser();
                   // Implement sign up logic here
                 },
-                child: const Text('Sign Up'),
+                child: const Text('Sign In'),
               ),
               const SizedBox(height: 16.0),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text('Already have an account? Sign In'),
+                child: const Text('Don\'t have an account? Sign Un'),
               ),
             ],
           ),
